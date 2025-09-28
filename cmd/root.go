@@ -4,24 +4,40 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/mbndr/figlet4go"
 	"github.com/spf13/cobra"
 )
 
 var rootCmd = &cobra.Command{
-	Use:     "zora",
-	Version: "1.0.0",
-	Short:   "A CLI tool to download a specific folder from a GitHub repository.",
-	Long: `zora is a fast and efficient command-line tool
-that allows you to download the contents of a specific folder from a public
-GitHub repository and save it as a single .zip file.
+	Use:   "zora",
+	Short: "Zora is a CLI tool to download a specific folder from GitHub.",
+	Long: `A fast and simple command-line tool written in Go to download a
+specific folder from a public GitHub repository without cloning the entire project.`,
+	Run: func(cmd *cobra.Command, args []string) {
+		ascii := figlet4go.NewAsciiRender()
 
-This is perfect for when you only need a subdirectory from a large project
-without having to clone the entire repository.`,
+		renderStr, _ := ascii.Render("Zora")
+		fmt.Print(renderStr)
+
+		fmt.Println()
+
+		fmt.Println("A fast and simple tool to download specific folders from GitHub.")
+		fmt.Println("-----------------------------------------------------------------")
+		fmt.Println("\nUsage:")
+		fmt.Println("  zora download <github-folder-url> [flags]")
+		fmt.Println("\nExample:")
+		fmt.Println("  zora download https://github.com/spf13/cobra/tree/main/docs")
+		fmt.Println("\nRun 'zora download --help' for more information.")
+	},
 }
 
 func Execute() {
-	if err := rootCmd.Execute(); err != nil {
-		fmt.Fprintf(os.Stderr, "Whoops. There was an error while executing your CLI '%s'", err)
+	err := rootCmd.Execute()
+	if err != nil {
 		os.Exit(1)
 	}
+}
+
+func init() {
+	// Flags and configuration settings can be defined here.
 }

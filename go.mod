@@ -1,8 +1,11 @@
-module zora.ashutosh.net
+module zora
 
 go 1.25.1
 
-require github.com/spf13/cobra v1.10.1
+require (
+	github.com/mbndr/figlet4go v0.0.0-20190224160619-d6cef5b186ea
+	github.com/spf13/cobra v1.10.1
+)
 
 require (
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect

@@ -1,7 +1,7 @@
 package main
 
 import (
-	"zora.ashutosh.net//cmd"
+	"zora/cmd"
 )
 
 func main() {

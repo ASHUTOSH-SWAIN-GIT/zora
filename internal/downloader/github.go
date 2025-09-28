@@ -21,6 +21,7 @@ func getRepoContents(info *GitHubURLInfo) ([]GitHubContent, error) {
 	req, err := http.NewRequest("GET", apiURL, nil)
 	if err != nil {
 		return nil, fmt.Errorf("failed to create request: %w", err)
+
 	}
 	req.Header.Set("User-Agent", "zora-cli")
 	req.Header.Set("Accept", "application/vnd.github.v3+json")
@@ -32,9 +33,8 @@ func getRepoContents(info *GitHubURLInfo) ([]GitHubContent, error) {
 	}
 	defer resp.Body.Close()
 
-	if resp.StatusCode == http.StatusOK {
+	if resp.StatusCode != http.StatusOK {
 		return nil, fmt.Errorf("github API responded with status: %s", resp.Status)
-
 	}
 
 	var contents []GitHubContent
