@@ -5,7 +5,7 @@ import (
 	"os"
 	"time"
 
-	"zora/internal/downloader"
+	"github.com/ASHUTOSH-SWAIN-GIT/zora/internal/downloader"
 
 	"github.com/spf13/cobra"
 )
