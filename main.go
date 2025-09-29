@@ -1,7 +1,13 @@
 package main
 
 import (
-	"zora/cmd"
+	"github.com/ASHUTOSH-SWAIN-GIT/zora/cmd"
+)
+
+var (
+	version = "dev"
+	commit  = "none"
+	date    = "unknown"
 )
 
 func main() {
